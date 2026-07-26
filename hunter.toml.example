@@ -1,0 +1,64 @@
+[profile]
+name = "Milad"
+languages = ["Go", "TypeScript", "Python"]
+topics = [
+  "ai",
+  "llm",
+  "backend",
+  "database",
+  "distributed-systems",
+  "kubernetes",
+  "observability",
+  "security",
+]
+exclude_topics = ["blockchain", "web3", "nft"]
+preferred_issue_terms = [
+  "bug",
+  "fix",
+  "regression",
+  "performance",
+  "security",
+  "reliability",
+  "backend",
+  "api",
+  "test",
+]
+deprioritize_issue_terms = [
+  "wikipedia",
+  "video",
+  "marketing",
+  "social media",
+  "translation",
+  "bounty",
+  "blog post",
+  "strategist",
+  "positioning narrative",
+]
+
+[scan]
+per_query = 10
+max_candidates = 35
+enrich_top = 10
+min_repo_stars = 100
+search_delay_seconds = 31.0
+state_path = ".prhunter/state.db"
+queries = [
+  "is:issue is:open no:assignee label:\"help wanted\"",
+  "is:issue is:open no:assignee label:\"good first issue\"",
+  "is:issue is:open no:assignee label:bug label:\"help wanted\"",
+]
+
+[ai]
+enabled = false
+
+# These endpoints intentionally target the two account-specific local proxy
+# ports. API keys stay in environment variables, never in this file.
+[ai.scout]
+base_url = "http://127.0.0.1:40701/v1"
+model = "gpt-5.5"
+api_key_env = "PRHUNTER_SCOUT_KEY"
+
+[ai.reviewer]
+base_url = "http://127.0.0.1:40702/v1"
+model = "gpt-5.5"
+api_key_env = "PRHUNTER_REVIEWER_KEY"

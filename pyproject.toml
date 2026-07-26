@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pr-hunter"
+version = "0.1.0"
+description = "Evidence-first discovery and qualification for high-value open-source contributions"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+  { name = "Milad Rashidikhah", email = "mrashidikhah32@gmail.com" },
+]
+dependencies = []
+
+[project.scripts]
+prhunter = "pr_hunter.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
